@@ -27,7 +27,7 @@ function Name() {
               <FaGithub />
             </a>
             <a 
-              href="https://www.instagram.com/sayandraj" 
+              href="https://www.instagram.com/sayand_raj_?igsh=OTgxNXFhYnBsN3lv" 
               target="_blank" 
               rel="noopener noreferrer"
               className='text-pink-500 text-3xl hover:text-pink-700 transition duration-300'
