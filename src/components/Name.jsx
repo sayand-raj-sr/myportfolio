@@ -12,10 +12,10 @@ function Name() {
           <h1 className='text-4xl md:text-5xl font-semibold text-white'>I&apos;m Sayand Raj</h1>
           <h2 className='text-3xl md:text-4xl font-medium text-gray-300'>Web Developer</h2>
 
-          <button href="/contact" className='mt-6 px-6 py-3 bg-blue-500 text-white font-bold rounded-lg shadow-lg hover:bg-blue-600 transition duration-300'>
-            Contact Me
+          <button  className='mt-6 px-6 py-3 bg-blue-500 text-white font-bold rounded-lg shadow-lg hover:bg-blue-600 transition duration-300'>
+            <a href="/contact" className="text-white  ">Contact Me</a>
           </button>
-
+           
          
           <div className='flex gap-4 mt-6'>
             <a 
