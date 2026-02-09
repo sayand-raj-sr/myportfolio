@@ -1,0 +1,11 @@
+.dark-mode{
+    background-color:black;
+     color:white
+}
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 80px; 
+}

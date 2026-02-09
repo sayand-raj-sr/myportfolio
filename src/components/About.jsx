@@ -1,48 +1,69 @@
 import React from 'react';
 import sayand1 from '../assets/white.jpg';
-import resume from '../assets/sayand raj sr resume.pdf'
-import Name from './Name';
+import resume from '../assets/sayand_raj_sr_fullstack.pdf';
+
 function About() {
   return (
-    <section className="bg-gray-900 text-white min-h-screen py-16 font-poppins">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <h1 className="text-center text-5xl font-extrabold text-white mb-12">
-          About Me
-        </h1>
-        <div className="flex flex-col md:flex-row items-center justify-center md:space-x-12 space-y-6 md:space-y-0">
+    <section id="about" className="bg-[#050505] text-white py-24 px-6 relative">
+      <div className="max-w-6xl mx-auto">
 
+        <div className="flex items-center gap-4 mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">About_Me</h2>
+          <div className="h-[1px] flex-1 bg-gradient-to-r from-blue-500/50 to-transparent"></div>
+        </div>
 
-          <div className="w-full md:w-1/3">
-            <img
-              src={sayand1}
-              alt="Profile"
-              className="w-80 h-110 rounded-xl"
-            />
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+
+          <div className="relative justify-self-center">
+            <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-blue-500 rounded-2xl z-0"></div>
+            <div className="relative z-10 w-72 h-96 overflow-hidden rounded-2xl bg-gray-800 shadow-2xl">
+              <img
+                src={sayand1}
+                alt="Sayand Raj"
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
           </div>
 
-
-          <div className="md:w-2/3 text-center md:text-left">
-            <h3 className="text-4xl font-semibold mb-4">
-              A Web Developer With a Passion for Designing
+          <div className="space-y-6">
+            <h3 className="text-3xl font-semibold leading-tight text-blue-400">
+              MERN Stack Developer <br />
+              <span className="text-white">& Problem Solver.</span>
             </h3>
-            <p className="text-lg leading-relaxed mb-6">
-              Hi, I’m Sayand Raj S R, a passionate web developer and BCA graduate with a strong foundation in the MEARN stack.
-              I specialize in building responsive, user-friendly web applications using technologies like HTML, CSS, Bootstrap, Tailwind, JavaScript, and React.
-            </p>
-            <p className="text-lg leading-relaxed mb-6">
-              I am constantly learning new technologies and crafting seamless experiences that align with client goals. Whether it’s front-end or back-end, I’m dedicated to delivering high-quality, scalable solutions.
-            </p>
-            <p className="text-lg leading-relaxed mb-6">
-              Let’s connect and bring your ideas to life!
-            </p>
 
+            <div className="space-y-4 text-gray-400 text-lg font-light leading-relaxed">
+              <p>
+                Hi, I’m <span className="text-white font-medium">Sayand Raj S R</span>. As a BCA graduate and a dedicated
+                MERN Stack fresher, I thrive on the logic and structure of coding.
+              </p>
 
-            <a
-              href={resume}
-              className="inline-block bg-gradient-to-r from-pink-500 to-yellow-500 text-white py-3 px-8 rounded-full text-lg font-semibold shadow-xl"
-            >
-              Download CV
-            </a>
+              <p>
+                My approach is simple: write <span className="italic text-gray-300">clean code</span>, build
+                <span className="italic text-gray-300"> user-centric designs</span>, and never stop learning.
+                I specialize in turning ideas into fully functional web applications using the latest JavaScript tools.
+              </p>
+            </div>
+
+            <div className="flex gap-4 pt-4">
+              <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-blue-300">#MongoDB</span>
+              <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-blue-300">#Express</span>
+              <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-blue-300">#React</span>
+              <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-blue-300">#Node</span>
+            </div>
+
+            <div className="pt-8 flex items-center gap-8">
+              <a
+                href={resume}
+                download
+                className="px-8 py-3 bg-white text-black font-bold rounded-lg hover:bg-blue-500 hover:text-white transition-all shadow-lg"
+              >
+                Get Resume
+              </a>
+              <div className="hidden sm:block h-10 w-[1px] bg-gray-800"></div>
+              <p className="text-xs font-mono text-gray-500 uppercase tracking-widest leading-tight">
+                Ready to contribute <br /> to your next big idea
+              </p>
+            </div>
           </div>
 
         </div>

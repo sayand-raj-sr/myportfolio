@@ -8,12 +8,11 @@ import Projects from '../components/Projects'
 function Home() {
   return (
     <div>
-      <Name/>
-      <About/>
-      <Skill/>
-      <Projects/>
-       <Contact/>
-      
+      <section id="home"><Name /></section>
+      <section id="about"><About /></section>
+      <section id="skills"><Skill /></section>
+      <section id="projects"><Projects /></section>
+      <section id="contact"><Contact /></section>
     </div>
   )
 }

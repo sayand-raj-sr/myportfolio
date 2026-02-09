@@ -3,115 +3,102 @@ import { FaTwitter, FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa';
 import Footer from './Footer';
 import swal from 'sweetalert';
 
-
-
 function Contact() {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [message, setMessage] = useState("")
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const formsubmit = (e) => {
-    e.preventDefault()
-    if (name == "" || email == "" || message == "") {
-      swal("Error", "Please fill the form", "error");
+    e.preventDefault();
+    if (!name || !email || !message) {
+      swal("Oops!", "All fields are required.", "warning");
+      return;
     }
-    else {
-      const details = {
-        name: name,
-        email: email,
-        message: message
-      }
+    const details = { name, email, message };
+    localStorage.setItem(email, JSON.stringify(details));
+    swal("Sent!", "Message received successfully!", "success");
+    setName(""); setEmail(""); setMessage("");
+  };
 
-      localStorage.setItem(email, JSON.stringify(details))
-
-      swal("Good job!", "message send successfully", "success");
-       
-      setEmail("")
-      setMessage("")
-      setName("")
-    }
-  }
   return (
+    <section className="bg-[#050505] text-white py-20 px-6 font-sans">
+      <div className="max-w-5xl mx-auto">
 
-    <section className="bg-[#050505] text-white py-20 px-6">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl text-indigo-400 font-bold mb-8">Contact Me</h2>
-        <p className="text-lg text-gray-300 mb-12">
-          Feel free to reach out for collaborations, inquiries, or just to say hello!
-        </p>
-      </div>
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Get in touch<span className="text-indigo-500">.</span></h2>
+          <p className="text-gray-400 text-lg">Have a project in mind? Let's talk about it.</p>
+        </div>
 
-      <div className="max-w-4xl mx-auto bg-gray-800 p-8 rounded-xl shadow-xl">
-        <form className="space-y-6" onSubmit={formsubmit}>
+        <div className="grid md:grid-cols-2 gap-16">
 
+          <div className="flex flex-col justify-between">
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-indigo-500 font-semibold uppercase tracking-widest text-sm mb-2">Email me</h4>
+                <a href="mailto:sayandrajsr@gmail.com" className="text-2xl hover:text-indigo-400 transition-colors">
+                  sayandrajsr@gmail.com
+                </a>
+              </div>
 
-          <div className="flex flex-col md:flex-row md:space-x-6">
-            <div className="w-full md:w-1/2">
-              <input type="text" placeholder="Your Name" className="w-full p-4 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
-                onChange={e => setName(e.target.value)}  value={name||""}/>
+              <div>
+                <h4 className="text-indigo-500 font-semibold uppercase tracking-widest text-sm mb-2">WhatsApp</h4>
+                <a href="https://wa.me/919947521948" target="_blank" rel="noreferrer" className="text-2xl hover:text-green-400 transition-colors">
+                  +91 99475 21948
+                </a>
+              </div>
             </div>
-            <div className="w-full md:w-1/2 ">
-              <input type="email" placeholder="Your Email" className="w-full p-4 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
-                onChange={e => setEmail(e.target.value)} value={email||""} />
+
+            <div className="flex space-x-6 mt-12 md:mt-0">
+              <a href="#" className="p-3 bg-white/5 rounded-full hover:bg-indigo-600 transition-all transform hover:-translate-y-1"><FaTwitter size={20} /></a>
+              <a href="https://linkedin.com/in/sayand-raj-s-r" className="p-3 bg-white/5 rounded-full hover:bg-indigo-600 transition-all transform hover:-translate-y-1"><FaLinkedin size={20} /></a>
+              <a href="https://github.com/sayand-raj-sr" className="p-3 bg-white/5 rounded-full hover:bg-indigo-600 transition-all transform hover:-translate-y-1"><FaGithub size={20} /></a>
+              <a href="https://wa.me/919947521948" className="p-3 bg-white/5 rounded-full hover:bg-indigo-600 transition-all transform hover:-translate-y-1"><FaWhatsapp size={20} /></a>
             </div>
           </div>
 
-          <div>
-            <textarea placeholder="Your Message" rows="6" className="w-full p-4 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
-              onChange={e => setMessage(e.target.value)} value={message||""}></textarea>
-          </div>
+          <form onSubmit={formsubmit} className="space-y-6">
+            <div className="border-b border-gray-800 focus-within:border-indigo-500 transition-colors py-2">
+              <input
+                type="text"
+                placeholder="Name"
+                className="w-full bg-transparent outline-none py-2 text-lg placeholder:text-gray-600"
+                onChange={e => setName(e.target.value)}
+                value={name}
+              />
+            </div>
 
-          <div className="flex justify-center">
-            <button type="submit"
-              className="bg-gradient-to-r from-orange-400 to-yellow-500 text-white py-3 px-8 rounded-lg shadow-xl hover:from-orange-500 hover:to-yellow-600 transition-all duration-300 ease-in-out"
+            <div className="border-b border-gray-800 focus-within:border-indigo-500 transition-colors py-2">
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full bg-transparent outline-none py-2 text-lg placeholder:text-gray-600"
+                onChange={e => setEmail(e.target.value)}
+                value={email}
+              />
+            </div>
+
+            <div className="border-b border-gray-800 focus-within:border-indigo-500 transition-colors py-2">
+              <textarea
+                placeholder="Message"
+                rows="4"
+                className="w-full bg-transparent outline-none py-2 text-lg placeholder:text-gray-600 resize-none"
+                onChange={e => setMessage(e.target.value)}
+                value={message}
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              className="mt-4 px-10 py-4 bg-indigo-600 text-white font-bold rounded-full hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20 active:scale-95"
             >
               Send Message
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-
-
-      <div className="flex justify-center space-x-6 mt-12">
-
-
-        <a
-          href="https://twitter.com/yourprofile"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaTwitter size={30} className="text-indigo-300 hover:text-indigo-500 transition duration-300" />
-        </a>
-
-
-        <a
-          href="https://linkedin.com/in/sayand-raj-s-r"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaLinkedin size={30} className="text-indigo-300 hover:text-indigo-500 transition duration-300" />
-        </a>
-
-
-        <a
-          href="https://github.com/sayand-raj-sr"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaGithub size={30} className="text-indigo-300 hover:text-indigo-500 transition duration-300" />
-        </a>
-
-
-        <a
-          href="https://wa.me/919947521948"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaWhatsapp size={30} className="text-indigo-300 hover:text-indigo-500 transition duration-300" />
-        </a>
+      <div className="mt-20 opacity-50">
+        <Footer />
       </div>
-
-      <Footer />
     </section>
   );
 }
