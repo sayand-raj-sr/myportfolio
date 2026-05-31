@@ -1,40 +1,61 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import sayand from '../assets/sayandimg.jpg';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 function Name() {
+  const container = useRef(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+  
+    tl.fromTo(".gsap-reveal", 
+      { opacity: 0, y: 50 }, 
+      { opacity: 1, y: 0, duration: 1, stagger: 0.15 }
+    )
+  
+    .fromTo(".gsap-img", 
+      { opacity: 0, scale: 0.9 }, 
+      { opacity: 1, scale: 1, duration: 1.2 }, 
+      "-=0.7"
+    );
+  }, { scope: container });
+
   return (
-    <section id="home" className='relative min-h-screen flex items-center justify-center bg-[#050505] px-6 overflow-hidden'>
+    <section ref={container} id="home" className='relative min-h-screen flex items-center justify-center bg-[#050505] px-6 overflow-hidden'>
       
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className='relative z-10 max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center'>
 
+        {/* Text Content */}
         <div className='space-y-6 text-center md:text-left order-2 md:order-1'>
-          <div className="inline-block px-4 py-1 rounded-md bg-white/5 border border-white/10 text-gray-400 font-mono text-xs uppercase tracking-widest mb-2">
+          <div className="gsap-reveal inline-block px-4 py-1 rounded-md bg-white/5 border border-white/10 text-gray-400 font-mono text-xs uppercase tracking-widest mb-2">
             // MERN Stack Developer
           </div>
           
-          <h1 className='text-6xl md:text-8xl font-black text-white leading-tight tracking-tighter'>
+          <h1 className='gsap-reveal text-6xl md:text-8xl font-black text-white leading-tight tracking-tighter'>
             Hi, I'm <br />
             <span className='text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-400 to-gray-600'>
               Sayand Raj
             </span>
           </h1>
 
-          <div className="flex items-center justify-center md:justify-start gap-3">
+          <div className="gsap-reveal flex items-center justify-center md:justify-start gap-3">
              <div className="h-[1px] w-12 bg-blue-500 hidden md:block"></div>
              <h2 className='text-xl md:text-2xl font-light text-blue-500 tracking-[0.2em] uppercase font-mono'>
                Ready to Code
              </h2>
           </div>
 
-          <p className='text-gray-500 max-w-md mx-auto md:mx-0 text-lg leading-relaxed font-light'>
+          <p className='gsap-reveal text-gray-500 max-w-md mx-auto md:mx-0 text-lg leading-relaxed font-light'>
             Specializing in high-performance web applications with a focus on clean architecture and user experience.
           </p>
 
-          <div className='flex flex-col sm:flex-row items-center gap-8 pt-6'>
+          <div className='gsap-reveal flex flex-col sm:flex-row items-center gap-8 pt-6'>
             <a 
               href="#contact" 
               className='relative overflow-hidden group px-10 py-4 bg-white text-black font-bold rounded-sm transition-all duration-300'
@@ -51,7 +72,8 @@ function Name() {
           </div>
         </div>
 
-        <div className='flex justify-center md:justify-end order-1 md:order-2'>
+        {/* Image Content */}
+        <div className='gsap-img flex justify-center md:justify-end order-1 md:order-2'>
           <div className='relative group'>
             <div className='absolute -inset-2 bg-gradient-to-b from-white/20 to-transparent rounded-2xl blur-md opacity-50 group-hover:opacity-100 transition duration-500'></div>
             

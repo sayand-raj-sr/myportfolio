@@ -3,39 +3,60 @@ import { HiMenu, HiX } from 'react-icons/hi';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
   const closeMenu = () => setIsOpen(false);
 
+  const links = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Skills", href: "#skills" },
+    { name: "Contact", href: "#contact" },
+  ];
+
   return (
-    <nav className="bg-gray-900/80 backdrop-blur-md text-white shadow-md fixed w-full z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold">SAYAND RAJ S R</h1>
-          </div>
+    <nav className="fixed top-0 w-full z-50 px-4 pt-6">
+      <div className="max-w-5xl mx-auto bg-black/30 backdrop-blur-lg border border-white/10 rounded-2xl shadow-2xl px-6 py-4 flex justify-between items-center">
+        
+        {/* Logo/Name */}
+        <div className="flex-shrink-0">
+          <h1 className="text-xl font-black tracking-tighter text-white">
+            SAYAND<span className="text-blue-500">.</span>
+          </h1>
+        </div>
 
-          <div className="hidden md:flex flex-1 justify-center space-x-8">
-            <a href="#home" className="text-gray-300 hover:text-white font-medium">Home</a>
-            <a href="#about" className="text-gray-300 hover:text-white font-medium">About</a>
-            <a href="#projects" className="text-gray-300 hover:text-white font-medium">Project</a>
-            <a href="#skills" className="text-gray-300 hover:text-white font-medium">Skills</a>
-            <a href="#contact" className="text-gray-300 hover:text-white font-medium">Contact</a>
-          </div>
+        <div className="hidden md:flex space-x-8">
+          {links.map((link) => (
+            <a 
+              key={link.name} 
+              href={link.href} 
+              className="text-gray-400 hover:text-white transition-all duration-300 font-medium text-sm uppercase tracking-widest"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
 
-          <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-300 hover:text-white">
-              {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
-            </button>
-          </div>
+        {/* Mobile Toggle */}
+        <div className="md:hidden">
+          <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2">
+            {isOpen ? <HiX size={24} /> : <HiMenu size={24} />}
+          </button>
         </div>
       </div>
 
+      {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-gray-900 px-4 py-4 space-y-2">
-          <a href="#about" onClick={closeMenu} className="block py-2 text-gray-300 hover:text-white">About</a>
-          <a href="#projects" onClick={closeMenu} className="block py-2 text-gray-300 hover:text-white">Project</a>
-          <a href="#skills" onClick={closeMenu} className="block py-2 text-gray-300 hover:text-white">Skills</a>
-          <a href="#contact" onClick={closeMenu} className="block py-2 text-gray-300 hover:text-white">Contact</a>
+        <div className="md:hidden mt-2 mx-4 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex flex-col space-y-4 text-center">
+          {links.map((link) => (
+            <a 
+              key={link.name} 
+              href={link.href} 
+              onClick={closeMenu} 
+              className="text-gray-300 hover:text-white uppercase tracking-widest"
+            >
+              {link.name}
+            </a>
+          ))}
         </div>
       )}
     </nav>
